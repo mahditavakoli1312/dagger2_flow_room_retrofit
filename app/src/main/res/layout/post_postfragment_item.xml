@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.example.flow_1.feature.post.ui.model.PostView" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/custom_postItem_black"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <TextView
+            android:id="@+id/tv_postTitle_post_postFragment_item"
+            style="@style/custom_postItem_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:paddingLeft="@dimen/value_16"
+            android:paddingRight="@dimen/value_16"
+            android:text="@{post.title}"
+            app:layout_constraintBottom_toTopOf="@id/tv_postBody_post_postFragment_item"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_postBody_post_postFragment_item"
+            style="@style/custom_postItem_body"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:maxLength="50"
+            android:paddingLeft="@dimen/value_16"
+            android:paddingRight="@dimen/value_16"
+            android:text="@{post.body}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_postTitle_post_postFragment_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
