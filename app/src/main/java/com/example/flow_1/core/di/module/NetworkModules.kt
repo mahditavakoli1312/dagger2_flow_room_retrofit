@@ -1,4 +1,4 @@
-package com.example.flow_1.core.di
+package com.example.flow_1.core.di.module
 
 import com.example.flow_1.core.data.Urls
 import dagger.Module

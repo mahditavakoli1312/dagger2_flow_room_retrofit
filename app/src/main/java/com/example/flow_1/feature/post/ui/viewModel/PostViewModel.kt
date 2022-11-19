@@ -1,6 +1,5 @@
 package com.example.flow_1.feature.post.ui.viewModel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -40,21 +39,28 @@ class PostViewModel @Inject constructor(
 
     fun fetch() {
         viewModelScope.launch(Dispatchers.IO) {
-            val repositoryResponse = postRepository.getPostFromRemoteDataSource()
+            val repositoryResponse = postRepository.getPostsWithStrategy()
 
             withContext(Dispatchers.Main) {
                 when (repositoryResponse) {
                     is ResultWrapper.AppError -> {
-                        _postFlow.update { postViews ->
+                        /*_postFlow.update { postViews ->
                             return@update repositoryResponse.data!!
+                        }*/
+                        repositoryResponse.data.collect { reponsePosts ->
+                            _postFlow.update { postViews ->
+                                return@update reponsePosts!!
+                            }
                         }
                         _loadSateMessage.value = repositoryResponse.appMessage
                         _loadSate.value = NetworkState.APPERROR
                     }
 
                     is ResultWrapper.Failure -> {
-                        _postFlow.update {
-                            return@update repositoryResponse.data!!
+                        repositoryResponse.data.collect { reponsePosts ->
+                            _postFlow.update { postViews ->
+                                return@update reponsePosts!!
+                            }
                         }
                         _loadSateMessage.value =
                             "${repositoryResponse.code} : ${repositoryResponse.severMessage}"
@@ -62,9 +68,10 @@ class PostViewModel @Inject constructor(
                     }
 
                     is ResultWrapper.Success -> {
-                        Log.d(TAG, repositoryResponse.data.toString())
-                        _postFlow.update {
-                            return@update repositoryResponse.data!!
+                        repositoryResponse.data.collect { reponsePosts ->
+                            _postFlow.update { postViews ->
+                                return@update reponsePosts!!
+                            }
                         }
                         _loadSate.value = NetworkState.SUCCESS
                     }

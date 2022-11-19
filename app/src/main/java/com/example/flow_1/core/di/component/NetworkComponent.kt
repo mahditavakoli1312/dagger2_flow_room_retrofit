@@ -1,6 +1,7 @@
-package com.example.flow_1.core.di
+package com.example.flow_1.core.di.component
 
 import com.example.flow_1.core.data.NetworkScope
+import com.example.flow_1.core.di.module.NetworkModules
 import dagger.Component
 import retrofit2.Retrofit
 

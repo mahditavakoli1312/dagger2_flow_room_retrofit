@@ -36,9 +36,23 @@ annotation class CommonUiScope
 */
 
 @Scope
+@MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 annotation class MainWithNetworkScope
 
 @Scope
+@MustBeDocumented
 @Retention(AnnotationRetention.RUNTIME)
 annotation class NetworkScope
+
+
+@Scope
+@MustBeDocumented
+@Retention(AnnotationRetention.RUNTIME)
+annotation class RoomScope
+
+@Scope
+@MustBeDocumented
+@Retention(AnnotationRetention.RUNTIME)
+annotation class ContextScop
+

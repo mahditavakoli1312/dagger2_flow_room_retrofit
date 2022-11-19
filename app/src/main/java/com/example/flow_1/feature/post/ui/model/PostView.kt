@@ -1,5 +1,6 @@
 package com.example.flow_1.feature.post.ui.model
 
+import com.example.flow_1.feature.post.data.model.entity.PostEntity
 import com.example.flow_1.feature.post.data.model.response.PostBaseResponse
 
 data class PostView(
@@ -10,6 +11,14 @@ data class PostView(
 )
 
 fun PostBaseResponse.toPostView() =
+    PostView(
+        userId = userId,
+        id = id,
+        title = title,
+        body = body
+    )
+
+fun PostEntity.toPostView() =
     PostView(
         userId = userId,
         id = id,
