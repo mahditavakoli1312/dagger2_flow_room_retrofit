@@ -1,5 +1,6 @@
 package com.example.flow_1.core.data
 import javax.inject.Scope
+
 /*
 
 @Scope
@@ -37,3 +38,7 @@ annotation class CommonUiScope
 @Scope
 @Retention(AnnotationRetention.RUNTIME)
 annotation class MainWithNetworkScope
+
+@Scope
+@Retention(AnnotationRetention.RUNTIME)
+annotation class NetworkScope

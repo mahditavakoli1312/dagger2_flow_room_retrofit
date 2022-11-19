@@ -51,3 +51,4 @@ object PostDiffCallback : DiffUtil.ItemCallback<PostView>() {
     }
 
 }
+
