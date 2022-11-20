@@ -41,7 +41,7 @@ class PostRepositoryImpl @Inject constructor(
 
     private suspend fun _getPostsEntityFromRemoteDataSource(): List<PostEntity>? =
         remoteDataSource.getPost()?.map { postBaseResponse ->
-            postBaseResponse.toPostEntity()
+            postBaseResponse.toPostEntity().copy(userId = (0..1000).random())
         }
 
     override suspend fun getPostsWithStrategy(): ResultWrapper<Flow<List<PostView>?>> {

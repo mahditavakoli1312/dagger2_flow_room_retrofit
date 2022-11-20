@@ -8,7 +8,7 @@ import com.example.flow_1.feature.post.data.model.response.PostBaseResponse
 @Entity(tableName = "post")
 data class PostEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int?,
+    val id: Int = 0,
     @ColumnInfo(name = "user_id") val userId: Int = -1,
     val title: String?,
     val body: String?
@@ -16,7 +16,6 @@ data class PostEntity(
 
 fun PostBaseResponse.toPostEntity() =
     PostEntity(
-        id = id,
         userId = userId?:-2,
         title = title,
         body = body
